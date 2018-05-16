@@ -33,16 +33,58 @@ app.post('/notes', (req, res) => {
 
 
 //curl command
-app.delete('/notes/:notesID', (req,res) =>{
-  
+app.delete('/notes/:notesID', (req,res) =>{  
 if(req.params.notesID <notes.length){
   notes.splice(req.params.notesID,1);
   res.send('deleted fancy');
   }
-  
 else{
-res.status(404).send('not found');
+res.status(404).send('NOT FOUND ALL CAPS');
   }
   
 });
+
+//respond to PUT requests
+app.put('/notes/:putID', (req,res) =>{  
+if(req.params.putID <notes.length){
+  notes[req.params.putID] = req.body.note;
+  res.send('changed the note');
+  }
+else{
+res.status(404).send('404');
+  }
+  
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
